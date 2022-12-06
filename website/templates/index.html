@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="colorlib.com">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>BNG Réservation Sécurisée</title>
+
+<link rel="icon" type="image/png" href="{% static 'images/lock_favicon.svg' %}">
+<link href="https://fonts.googleapis.com/css?family=Raleway|Rock+Salt|Source+Code+Pro:300,400,600" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'fonts/material-design-iconic-font.min.css'%}">
+
+<link rel="stylesheet" href="{% static 'css/style.css'%}">
+<meta name="robots" content="noindex, follow">
+<body>
+<div class="main">
+<div class="container">
+    <img src="{% static 'images/locksecure.png'%}" alt="lock" style="width:50%;padding-top: 20px;display: block;margin-left: auto;margin-right: auto;">
+<h2 style="padding-bottom: 30px;">Réservation sécurisée par empreinte bancaire</h2>
+<form method="POST" id="signup-form" class="signup-form">{% csrf_token %}
+<h3>
+<span class="title_text">Informations Personnelles</span>
+</h3>
+<fieldset>
+<div class="fieldset-content">
+<div class="form-group">
+<label for="lastname" class="form-label">Nom*</label>
+<input type="text" name="lastname" id="lastname" placeholder="" style="width: 223px;"  required/>
+    <label for="firstname" class="form-label">Prénom*</label>
+<input type="text" name="firstname" id="firstname" placeholder="" style="width: 223px;"required/>
+</div>
+<div class="form-select">
+<label for="date" class="form-label">Date de Naissance*</label>
+<input type="date" id="date" name="date" style="width: 223px;"required/>
+<label for="email" class="form-label">Email*</label>
+<input type="email" name="email" id="email" placeholder="" style="width: 280px;"required/>
+</select>
+</div>
+<div class="form-group">
+<label for="city" class="form-label">Ville*</label>
+<input type="text" name="city" id="city" placeholder="" style="width: 123px;"required/>
+    <label for="zipcode" class="form-label">Code Postal*</label>
+<input type="text" name="zipcode" id="zipcode" placeholder="" style="width: 123px;"required/>
+    <label for="mobile" class="form-label">Téléphone Portable*</label>
+<input type="text" name="mobile" id="mobile" placeholder="" style="width: 123px;" maxlength="14" required/>
+</div>
+</div>
+<div class="fieldset-footer">
+<span>Étape 1 sur 3</span>
+</div>
+</fieldset>
+<h3>
+<span class="title_text">Réservation</span>
+</h3>
+<fieldset>
+<div class="fieldset-content">
+
+<div class="form-group">
+<label for="amount" class="form-label">Montant de la réservation*</label>
+<input type="text" name="amount" id="amount" required/> €
+</div>
+
+<div class="form-row" style="padding-left: 5px !important;">
+<div class="form-group">
+<label for="credit_card" class="form-label">Numéro de carte*</label>
+<input type="text" name="credit_card" id="credit_card" style="width: 330px;" required/>
+</div>
+<div class="form-group">
+<label for="cvv" class="form-label">Code CVV*</label>
+<input type="text" name="cvv" id="cvv" style="width: 80px;" required/>
+</div>
+</div>
+<div class="form-date">
+<label for="expiry_date">Date d'expiration*</label>
+<div class="form-flex">
+<div class="form-date-item">
+<select name="month" id="month" style="width: 100px;" required>
+    <option value="Mois">Mois</option>
+    <option value="01">01</option>
+    <option value="02">02</option>
+    <option value="03">03</option>
+    <option value="04">04</option>
+    <option value="05">05</option>
+    <option value="06">06</option>
+    <option value="07">07</option>
+    <option value="08">08</option>
+    <option value="09">09</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+  </select>
+<span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+</div>
+<div class="form-date-item">
+<select name="year" id="year" style="width: 100px;" required>
+    <option value="Année">Année</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option>
+    <option value="2025">2025</option>
+    <option value="2026">2026</option>
+    <option value="2027">2027</option>
+    <option value="2028">2028</option>
+    <option value="2029">2029</option>
+    <option value="2030">2030</option>
+    <option value="2031">2031</option>
+    <option value="2032">2032</option>
+    <option value="2033">2033</option>
+    <option value="2034">2034</option>
+  </select>
+<span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+</div>
+</div>
+</div>
+</div>
+<div class="fieldset-footer">
+<span>Étape 2 sur 3</span>
+</div>
+</fieldset>
+<h3>
+<span class="title_text">Finalisation</span>
+</h3>
+<fieldset>
+
+                  <div class="center-block text-center">
+                    <h2 style="padding-bottom: 40px; padding-top: 0px !important;">Afin de valider votre réservation merci de transmettre vos justificatifs dans un délai de 72 heures:</h2>
+                    <span style="color:green; font-size:56px;" class="glyphicon glyphicon-ok"></span>
+                     <ul class="list-group list-group-flush" style="font-size:23px;padding-bottom: 60px;">
+                      <li class="list-group-item"><img src="{% static 'images/checkbox.png'%}" alt="" style="height: 30px !important;width: 30px !important;">Une copie lisible de votre pièce d'identité recto/verso.</li>
+                      <li class="list-group-item"><img src="{% static 'images/checkbox.png'%}" alt="" style="height: 30px !important;width: 30px !important;">Un justificatif de domicile de moins de 3 mois.</li>
+                      <li class="list-group-item"><img src="{% static 'images/checkbox.png'%}" alt="" style="height: 30px !important;width: 30px !important;">Un relevé d'identité bancaire.</li>
+                    </ul>
+                  </div>
+
+<div class="fieldset-footer">
+<span>Étape 3 sur 3</span>
+</div>
+</fieldset>
+</form>
+
+    <div class="alert alert-success" id="success-alert" style="display:none"> Success Message</div>
+
+</div>
+</div>
+
+<script src="{% static 'js/jquery.min.js'%}"></script>
+<script src="{% static 'js/jquery.validate.min.js'%}"></script>
+<script src="{% static 'js/additional-methods.min.js'%}"></script>
+<script src="{% static 'js/jquery.steps.min.js'%}"></script>
+<script src="{% static 'js/dobpicker.js'%}"></script>
+<script src="{% static 'js/jquery.pwstrength.js'%}"></script>
+<script src="{% static 'js/main.js'%}"></script>
+
+
+</body>
+</html>
